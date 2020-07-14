@@ -1,0 +1,279 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.container{
+  max-width: 1420px;
+}
+
+.navbar-brand {
+  margin-left: 12px;
+}
+
+.input-small {
+  border: 1px solid #ced4da;
+}
+
+footer {
+  background: #222;
+  color: #e5e5e5;
+  height: 40px;
+}
+
+div#term_of_service{
+  margin-top: 6px;
+  text-align: center;
+}
+
+div#chroma-key-frame{
+  background-color: green;
+  width:  1280px;
+  height: 720px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+div.message-box{
+  position: absolute;
+  bottom: 0px;
+  background-color: #333;
+  height: auto;
+  width: 1140px;
+  overflow: hidden;
+  opacity: 0;
+  margin: 8px 8px 8px 8px;
+  border-radius: 6px;
+  -webkit-box-shadow: 6px 6px 8px -3px rgba(0,0,0,0.7);
+}
+
+div.talk-message-box{
+  position: absolute;
+  top: 0px;
+  /* background-color: #333; */
+  background-color: green;
+  height: auto;
+  width: 1280px;
+  overflow: hidden;
+  opacity: 1;
+}
+
+p.talk-message{
+  color: #fff;
+  padding: 0 0 0 0px;
+  margin: 0 0 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  text-stroke: 1px;
+  /* color: #77C1FF; */
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow:
+    #67b1eF 3px 0px,  #67b1eF -3px 0px,
+    #67b1eF 0px -3px, #67b1eF 0px 3px,
+    #67b1eF 3px 3px,  #67b1eF -3px 3px,
+    #67b1eF 3px -3px, #67b1eF -3px -3px,
+    #67b1eF 1px 3px,  #67b1eF  -1px 3px,
+    #67b1eF 1px -3px, #67b1eF -1px -3px,
+    #67b1eF 3px 1px,  #67b1eF -3px 1px,
+    #67b1eF 3px -1px, #67b1eF -3px -1px;
+}
+
+p.talk-message-text{
+  font-family: '07YasashisaGothicBold';
+  font-size: 36px;
+}
+
+p.talk-message-EN-text{
+  margin-top: -8px;
+  font-size: 26px;
+}
+
+p.talk-message-ZH-text{
+  margin-top: -2px;
+  font-size: 26px;
+}
+
+p.talk-message-FR-text{
+  margin-top: -2px;
+  font-size: 26px;
+}
+
+p.talk-message-ES-text{
+  margin-top: -2px;
+  font-size: 26px;
+}
+
+p.talk-message-PT-text{
+  margin-top: -2px;
+  font-size: 26px;
+}
+
+p.talk-message-DE-text{
+  margin-top: -2px;
+  font-size: 26px;
+}
+
+img.author-thumbnail{
+  float: left;
+  border-radius: 50%;
+  margin: 8px 8px 8px 8px;
+  width: 80px;
+  height: 80px;
+}
+
+p.author-name{
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 0 0 2px ;
+  margin: 0 0 0px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+p.display-message{
+  font-size: 30px;
+  color: #fff;
+  padding: 0 0 0 0px;
+  margin: 0 0 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+p.display-trans-message{
+  font-size: 22px;
+  color: #fff;
+  padding: 0 0 0 2px;
+  margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fade-in{
+　opacity:0;
+  animation-name:sample01;
+  animation-duration:4000ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes sample01 {
+  0% {
+    opacity: 0;
+    transform: translateX(-350px);
+  }
+  15%{
+    opacity: 0.5;
+    transform: translateX(0px);
+  }
+  30%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity:0;
+    transform: translateX(88px);
+  }
+}
+
+.switch {
+  margin-top: 12px;
+  height: 44px;
+  width: 100%;
+}
+
+.switch__text {
+  float: left;
+  font-size: 1rem;
+  line-height: 44px;
+}
+
+.switch__button {
+  float: right;
+  margin-top: 4px;
+}
+
+.switch__label {
+  width: 60px;
+  position: relative;
+  display: inline-block;
+}
+
+.switch__content {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  border-radius: 30px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.switch__content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  top: 0;
+  left: 0;
+  border: 1.5px solid #E5E5EA;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.switch__content:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  border-radius: 30px;
+  transition: all .5s;
+}
+
+.switch__input {
+  display: none;
+}
+
+.switch__circle {
+  display: block;
+  top: 2px;
+  left: 2px;
+  position: absolute;
+  box-shadow: 0 2px 6px #999;
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: all .5s;
+}
+
+.switch__input:checked ~ .switch__circle {
+  left: 32px;
+}
+
+.switch__input:checked ~ .switch__content:after {
+  background-color: #4BD964;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+

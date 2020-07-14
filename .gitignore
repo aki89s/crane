@@ -1,0 +1,7 @@
+node_modules
+dist
+*.swp
+.env
+.DS_Store
+release
+logs

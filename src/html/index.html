@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="readUs">
+  <head>
+    <title>Youtube LiveChat Speaker</title>
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+  </head>
+  <body>
+    <main>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <span class="navbar-brand mb-0 h1">electran</span>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+
+            <div id="async-reply"></div>
+            <div id="chat"></div>
+
+            <div id="chroma-key-frame">
+              <div class="message-box">
+                <img id="author-thumbnail" class="author-thumbnail" src="https://yt3.ggpht.com/a-/AOh14GjMA6Y_EoGTQWKBcipSITPfGvkojxJ9QSgr2U5H=s88-c-k-c0xffffffff-no-rj-mo" alt="author-thumbnail">
+                <p id="author-name" class="author-name">さんぷるauthor-nameだよよよよよよよよよよよよよよよよよよよよよよよよ</p>
+                <p id="display-message" class="display-message">さんぷるdisplay-messageだよよよよよよよよよよよよよよよよよよよよよよよ</p>
+                <p id="display-trans-message" class="display-trans-message">さんぷるtrans-messageだよよよよよよよよよよよよよよよよよよよよよよよ</p>
+              </div>
+
+              <div class="talk-message-box">
+                <p class="talk-message talk-message-text" id="talk-message-text">自分の声</p>
+                <p class="talk-message talk-message-EN-text" id="talk-message-EN-text">My voice.</p>
+                <p class="talk-message talk-message-ZH-text" id="talk-message-ZH-text">我的声音。</p>
+                <p class="talk-message talk-message-FR-text" id="talk-message-FR-text">Ma voix.</p>
+                <p class="talk-message talk-message-ES-text" id="talk-message-ES-text">Mi voz.</p>
+                <p class="talk-message talk-message-PT-text" id="talk-message-PT-text">A minha voz.</p>
+                <p class="talk-message talk-message-DE-text" id="talk-message-DE-text">Meine Stimme.</p>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="input-small" id="video_id_text_area" placeholder="video_id" aria-label="video_id" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="video_id_send_button">Button</button>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="switch">
+                <div class="switch__text">自分</div>
+                <div class="switch__button">
+                  <label class="switch__label">
+                    <input id="switch_input" type="checkbox" class="switch__input" />
+                    <span class="switch__content"></span>
+                    <span class="switch__circle"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <div id="term_of_service">
+        <span>This application uses Youtube API. When you use this application, please follow the terms of use of Youtube API. </span>
+        <span><a href="https://www.youtube.com/t/terms">https://www.youtube.com/t/terms</a></span>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="../javascripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  </body>
+</html>

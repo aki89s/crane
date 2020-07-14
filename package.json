@@ -1,0 +1,71 @@
+{
+  "name": "electron_sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/javascripts/main.js",
+  "dependencies": {
+    "@google-cloud/speech": "^4.1.0",
+    "app-root-dir": "^1.0.2",
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "electron-log": "^4.2.2",
+    "electron-store": "^5.2.0",
+    "fix-path": "^3.0.0",
+    "node-record-lpcm16": "^1.0.1",
+    "stream": "0.0.2"
+  },
+  "devDependencies": {
+    "electron": "^9.0.5",
+    "electron-builder": "^22.7.0"
+  },
+  "scripts": {
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --asar --ignore=/dist --ignore=/build --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --asar --ignore=/dist --ignore=/build --prune=true --out=release-builds",
+    "postinstall": "install-app-deps",
+    "pack": "build --dir",
+    "dist": "build -mw",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "build": {
+    "appId": "aki-s.electran-mac",
+    "directories": {
+      "output": "release/"
+    },
+    "files": [
+      "assets",
+      "src",
+      "./src/html/index.html",
+      "bin",
+      "package.json",
+      "package-lock.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "resources/mac/bin",
+        "to": "Resources/bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "mac": {
+      "icon": "assets/mac/icon.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "icon": "assets/win/icon_win.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "asar": false
+  }
+}
