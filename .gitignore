@@ -5,3 +5,5 @@ dist
 .DS_Store
 release
 logs
+
+release-builds/
