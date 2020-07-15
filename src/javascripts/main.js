@@ -5,8 +5,30 @@ const log = require('electron-log');
 log.transports.file.level = 'info';
 log.transports.file.file = appRootDir + '/log.log';
 
-const soxpath = `:${appRootDir}` + '/bin';
-process.env['PATH'] += soxpath;
+const { platform } = require("os");
+const path = require("path");
+console.log({ msg: "configure PATH...", path: process.env["PATH"], appRootDir });
+switch (platform()) {
+  case "darwin":
+    // for release build
+    const appName = "electron_sample.app";
+    process.env["PATH"] += ":" + `/Applications/${appName}/Contents/Resources/bin/`;
+
+    // for release build without install
+    process.env["PATH"] += ":" + path.join(appRootDir, "..", "bin");
+
+    // for develop build
+    process.env["PATH"] +=
+      ":" + path.join(appRootDir, "resources", "mac", "bin");
+    break;
+  case "win32":
+    // for release build
+    process.env["PATH"] += ";" + path.join(appRootDir, "..", "bin");
+    break;
+  default:
+    console.error("未知のプラットフォームが検出されました。");
+}
+console.log({ msg: "PATH configured!", path: process.env["PATH"], appRootDir });
 
 const { app, Menu, BrowserWindow, ipcMain, net } = require("electron");
 const recorder = require('node-record-lpcm16');
@@ -41,7 +63,7 @@ let bridgingOffset = 0;
 let lastTranscriptWasFinal = false;
 
 var last_message = '';
-  
+
 function startStream() {
   audioInput = [];
   recognizeStream = new speech.SpeechClient()

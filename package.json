@@ -20,8 +20,8 @@
     "electron-packager": "^15.0.0"
   },
   "scripts": {
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --asar --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --asar --prune=true --out=release-builds",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --extra-resource=resources/mac/bin --asar --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --extra-resource=resources/win/bin --asar --prune=true --out=release-builds",
     "postinstall": "install-app-deps",
     "pack": "build --dir",
     "dist": "build -mw",
