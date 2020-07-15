@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "electron": "^9.0.5",
-    "electron-builder": "^22.7.0"
+    "electron-builder": "^22.7.0",
+    "electron-packager": "^15.0.0"
   },
   "scripts": {
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --asar --ignore=/dist --ignore=/build --prune=true --out=release-builds",
