@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="readUs">
   <head>
-    <title>Youtube LiveChat Speaker</title>
+    <title>Crane</title>
 
     <!-- Required meta tags -->
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   <body>
     <main>
       <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <span class="navbar-brand mb-0 h1">electran</span>
+        <span class="navbar-brand mb-0 h1">Crane</span>
       </nav>
 
       <div class="container">
@@ -32,7 +32,7 @@
                 <p id="display-trans-message" class="display-trans-message">さんぷるtrans-messageだよよよよよよよよよよよよよよよよよよよよよよよ</p>
               </div>
 
-              <div class="talk-message-box">
+              <div class="talk-message-box" id="talk-message-box">
                 <p class="talk-message talk-message-text" id="talk-message-text">自分の声</p>
                 <p class="talk-message talk-message-EN-text" id="talk-message-EN-text">My voice.</p>
                 <p class="talk-message talk-message-ZH-text" id="talk-message-ZH-text">我的声音。</p>
@@ -61,8 +61,17 @@
                   </label>
                 </div>
               </div>
+              <div class="switch_display">
+                <div class="switch__display_text">表示</div>
+                <div class="switch__display_button">
+                  <label class="switch__display_label">
+                    <input id="switch_display_input" type="checkbox" class="switch__display_input" />
+                    <span class="switch__display_content"></span>
+                    <span class="switch__display_circle"></span>
+                  </label>
+                </div>
+              </div>
             </div>
-
           </div>
         </div>
 

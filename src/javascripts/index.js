@@ -6,13 +6,13 @@ const store = window.store;
 
 const video_id_send_button = document.getElementById('video_id_send_button');
 const talk_message_switch = document.getElementById('switch_input');
+const talk_message_display_switch = document.getElementById('switch_display_input');
 var speechinfo = new SpeechSynthesisUtterance();
 var last_message = '';
 
 document.querySelector('.message-box').onanimationend = () => {
   document.querySelector('.message-box').classList.remove('fade-in');
 };
-
 
 function VoiceInitialize(){
   var voices = window.speechSynthesis.getVoices();
@@ -24,6 +24,13 @@ function VoiceInitialize(){
   speechinfo.pitch = 1.0;
   speechinfo.text = "ボイスを初期化しました";
   window.speechSynthesis.speak(speechinfo);
+
+  if(store.get('talk_message_display_flag') == 1){
+    document.getElementById('talk-message-box').style.visibility = "visible"
+    document.getElementById('switch_display_input').checked = true
+  }else{
+    document.getElementById('talk-message-box').style.visibility = "hidden"
+  }
 };
 VoiceInitialize();
 
@@ -36,14 +43,23 @@ video_id_send_button.addEventListener('click', function (clickEvent) {
 })
 
 document.getElementById('switch_input').addEventListener('click', function(){
-  console.log(store.get('talk_message_flag'));
   if(store.get('talk_message_flag') == null){ store.set('talk_message_flag', 0) }
   if(store.get('talk_message_flag') == 1){
-    console.log('hey');
     store.set('talk_message_flag', 0);
   }else{
     store.set('talk_message_flag', 1);
     ipcRenderer.send('start_talk_message');
+  }
+})
+
+document.getElementById('switch_display_input').addEventListener('click', function(){
+  if(store.get('talk_message_display_flag') == null){ store.set('talk_message_display_flag', 0) }
+  if(store.get('talk_message_display_flag') == 1){
+    store.set('talk_message_display_flag', 0);
+    document.getElementById('talk-message-box').style.visibility = "hidden"
+  }else{
+    store.set('talk_message_display_flag', 1);
+    document.getElementById('talk-message-box').style.visibility = "visible"
   }
 })
 
@@ -80,7 +96,6 @@ ipcRenderer.on('stream_DE_text', (event, arg) => {
 })
 
 ipcRenderer.on('stream_en_text', (event, arg) => {
-  console.log(arg);
   document.getElementById('ping-pong-test').innerHTML += 'ping-pong-test';
 })
 
