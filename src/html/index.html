@@ -20,7 +20,6 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-
             <div id="async-reply"></div>
             <div id="chat"></div>
 
@@ -49,32 +48,65 @@
                 <button class="btn btn-outline-secondary" type="button" id="video_id_send_button">Button</button>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="col-md-2">
-              <div class="switch">
-                <div class="switch__text">自分</div>
-                <div class="switch__button">
-                  <label class="switch__label">
-                    <input id="switch_input" type="checkbox" class="switch__input" />
-                    <span class="switch__content"></span>
-                    <span class="switch__circle"></span>
-                  </label>
-                </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="input-group">
+              <input type="text" class="input-small" id="yt_api_key_text_area" placeholder="yt_api_key" aria-label="yt_api_key" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="yt_api_key_button">YT api key</button>
               </div>
-              <div class="switch_display">
-                <div class="switch__display_text">表示</div>
-                <div class="switch__display_button">
-                  <label class="switch__display_label">
-                    <input id="switch_display_input" type="checkbox" class="switch__display_input" />
-                    <span class="switch__display_content"></span>
-                    <span class="switch__display_circle"></span>
-                  </label>
-                </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="input-group">
+              <input type="text" class="input-small" id="dl_api_key_text_area" placeholder="dl_api_key" aria-label="dl_api_key" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="dl_api_key_button">DL api key</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="input-group">
+              <input type="text" class="input-small" id="google_credentials_text_area" placeholder="google_credentials" aria-label="google_credentials" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="google_credentials_button">google credentials</button>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="switch">
+              <div class="switch__text">自分</div>
+              <div class="switch__button">
+                <label class="switch__label">
+                  <input id="switch_input" type="checkbox" class="switch__input" />
+                  <span class="switch__content"></span>
+                  <span class="switch__circle"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="switch_display">
+              <div class="switch__display_text">表示</div>
+              <div class="switch__display_button">
+                <label class="switch__display_label">
+                  <input id="switch_display_input" type="checkbox" class="switch__display_input" />
+                  <span class="switch__display_content"></span>
+                  <span class="switch__display_circle"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

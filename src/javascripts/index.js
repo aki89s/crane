@@ -5,6 +5,9 @@ const app = window.app;
 const store = window.store;
 
 const video_id_send_button = document.getElementById('video_id_send_button');
+const yt_api_key_button = document.getElementById('yt_api_key_button');
+const dl_api_key_button = document.getElementById('dl_api_key_button');
+const google_credentials_button = document.getElementById('google_credentials_button');
 const talk_message_switch = document.getElementById('switch_input');
 const talk_message_display_switch = document.getElementById('switch_display_input');
 var speechinfo = new SpeechSynthesisUtterance();
@@ -31,6 +34,10 @@ function VoiceInitialize(){
   }else{
     document.getElementById('talk-message-box').style.visibility = "hidden"
   }
+
+  document.getElementById('yt_api_key_text_area').value = store.get('yt_api_key') == "" ? "未設定" : "設定されています";
+  document.getElementById('dl_api_key_text_area').value = store.get('dl_api_key') == "" ? "未設定" : "設定されています";
+  document.getElementById('google_credentials_text_area').value = store.get('google_credentials') == "" ? "未設定" : "設定されています";
 };
 VoiceInitialize();
 
@@ -40,6 +47,21 @@ VoiceInitialize();
 // ===============
 video_id_send_button.addEventListener('click', function (clickEvent) {
   ipcRenderer.send('video_send', document.getElementById('video_id_text_area').value);
+})
+
+yt_api_key_button.addEventListener('click', function (clickEvent) {
+  store.set('yt_api_key', document.getElementById('yt_api_key_text_area').value);
+  document.getElementById('yt_api_key_text_area').value = "";
+})
+
+dl_api_key_button.addEventListener('click', function (clickEvent) {
+  store.set('dl_api_key', document.getElementById('dl_api_key_text_area').value);
+  document.getElementById('dl_api_key_text_area').value = "";
+})
+
+google_credentials_button.addEventListener('click', function (clickEvent) {
+  store.set('google_credentials', document.getElementById('google_credentials_text_area').value);
+  document.getElementById('google_credentials_text_area').value = "";
 })
 
 document.getElementById('switch_input').addEventListener('click', function(){

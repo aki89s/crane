@@ -11,7 +11,7 @@ console.log({ msg: "configure PATH...", path: process.env["PATH"], appRootDir })
 switch (platform()) {
   case "darwin":
     // for release build
-    const appName = "electron_sample.app";
+    const appName = "crane.app";
     process.env["PATH"] += ":" + `/Applications/${appName}/Contents/Resources/bin/`;
 
     // for release build without install
@@ -39,6 +39,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const Store = require("electron-store");
 const store = new Store();
+
+// SpeechToText用の credentials.json のパスを設定する
+process.env["GOOGLE_APPLICATION_CREDENTIALS"] = store.get('google_credentials');
 
 const streamingLimit = 180000;
 const sampleRateHertz = 16000;
@@ -184,7 +187,7 @@ function restartStream() {
 
   newStream = true;
 
-  if (store.get('talk_message_flag' == 1)) {
+  if (store.get('talk_message_flag') == 1) {
     startStream();
   }
 }
@@ -237,7 +240,8 @@ var translate = function(message, target_lang){
   var url = "https://api.deepl.com/v2/translate" +
     `?text=${message}` +
     `&target_lang=${target_lang}` +
-    `&auth_key=${process.env['DEEPL_API_KEY']}`
+    // `&auth_key=${process.env['DEEPL_API_KEY']}`
+    `&auth_key=${store.get('dl_api_key')}`
 
   var options = {
     url: url,
@@ -260,19 +264,20 @@ var translate = function(message, target_lang){
 
 var translation = function(event, message){
   // message が日本語じゃなければ日本語に翻訳
-  var reg = new RegExp(/[!！"#$%&'()（）＊＋＜＝＞？＠・。！”＃＄％＆’（）＝〜｜\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g);
-  var replaced_message = message.replace(reg, '');
-  var is_japanese = replaced_message.match(/[\u30a0-\u30ff\u3040-\u309f]+$/) ? true : false
+  var is_japanese = message.match(/[\u30a0-\u30ff]/) || message.match(/[\u3040-\u309f]/) ? true : false
   if(is_japanese){
+    console.log(`this is japanse: ${message}`)
     var url = "https://api.deepl.com/v2/translate" +
       `?text=${message}` +
       "&target_lang=EN" +
-      `&auth_key=${process.env['DEEPL_API_KEY']}`
+      // `&auth_key=${process.env['DEEPL_API_KEY']}`
+      `&auth_key=${store.get('dl_api_key')}`
   }else{
     var url = "https://api.deepl.com/v2/translate" +
       `?text=${message}` +
       "&target_lang=JA" +
-      `&auth_key=${process.env['DEEPL_API_KEY']}`
+      //`&auth_key=${process.env['DEEPL_API_KEY']}`
+      `&auth_key=${store.get('dl_api_key')}`
   }
 
   var options = {
@@ -301,7 +306,8 @@ var livechat_read = function(event){
       "&part=authorDetails,snippet" +
       "&maxResults=200" +
       "&hl=ja" +
-      `&key=${process.env['SPEECH_TO_TEXT_API_KEY']}`
+      // `&key=${process.env['SPEECH_TO_TEXT_API_KEY']}`
+      `&key=${store.get('yt_api_key')}`
 
     var options = {
       url: url,
@@ -396,7 +402,8 @@ ipcMain.on('video_send', (event, arg) => {
     "&part=liveStreamingDetails,snippet" +
     "&maxResults=1" +
     "&hl=ja" +
-    `&key=${ process.env['SPEECH_TO_TEXT_API_KEY'] }`
+    // `&key=${ process.env['SPEECH_TO_TEXT_API_KEY'] }`
+    `&key=${store.get('yt_api_key')}`
   var options = {
     url: url,
     protocol: 'https:',
