@@ -240,7 +240,6 @@ var translate = function(message, target_lang){
   var url = "https://api.deepl.com/v2/translate" +
     `?text=${message}` +
     `&target_lang=${target_lang}` +
-    // `&auth_key=${process.env['DEEPL_API_KEY']}`
     `&auth_key=${store.get('dl_api_key')}`
 
   var options = {
@@ -265,27 +264,34 @@ var translate = function(message, target_lang){
 var translation = function(event, message){
   // message が日本語じゃなければ日本語に翻訳
   var is_japanese = message.match(/[\u30a0-\u30ff]/) || message.match(/[\u3040-\u309f]/) ? true : false
+  var first_url = "";
+  var second_url = "";
   if(is_japanese){
-    console.log(`this is japanse: ${message}`)
-    var url = "https://api.deepl.com/v2/translate" +
+    first_url = "https://api.deepl.com/v2/translate" +
       `?text=${message}` +
       "&target_lang=EN" +
-      // `&auth_key=${process.env['DEEPL_API_KEY']}`
+      `&auth_key=${store.get('dl_api_key')}`
+    second_url = "https://api.deepl.com/v2/translate" +
+      `?text=${message}` +
+      "&target_lang=PT" +
       `&auth_key=${store.get('dl_api_key')}`
   }else{
-    var url = "https://api.deepl.com/v2/translate" +
+    first_url = "https://api.deepl.com/v2/translate" +
       `?text=${message}` +
       "&target_lang=JA" +
-      //`&auth_key=${process.env['DEEPL_API_KEY']}`
+      `&auth_key=${store.get('dl_api_key')}`
+    second_url = "https://api.deepl.com/v2/translate" +
+      `?text=${message}` +
+      "&target_lang=EN" +
       `&auth_key=${store.get('dl_api_key')}`
   }
 
   var options = {
-    url: url,
+    url: first_url,
     protocol: 'https:',
     port: 443
   }
-  const request = net.request(options);
+  var request = net.request(options);
   request.on('response', (response) => {
     var body = "";
     response.on('data', (chunk) => {
@@ -294,6 +300,24 @@ var translation = function(event, message){
     response.on('end', () => {
       var json = JSON.parse(body)
       event.sender.send('livechat_trans_callback', json.translations[0].text);
+    })
+  })
+  request.end()
+
+  options = {
+    url: second_url,
+    protocol: 'https:',
+    port: 443
+  }
+  request = net.request(options);
+  request.on('response', (response) => {
+    var body = "";
+    response.on('data', (chunk) => {
+      body += chunk;
+    })
+    response.on('end', () => {
+      var json = JSON.parse(body)
+      event.sender.send('livechat_trans_callback_second', json.translations[0].text);
     })
   })
   request.end()
@@ -306,7 +330,6 @@ var livechat_read = function(event){
       "&part=authorDetails,snippet" +
       "&maxResults=200" +
       "&hl=ja" +
-      // `&key=${process.env['SPEECH_TO_TEXT_API_KEY']}`
       `&key=${store.get('yt_api_key')}`
 
     var options = {
@@ -374,7 +397,6 @@ app.on("ready", function() {
       console.error('Audio recording error ' + err);
     })
     .pipe(audioInputStreamTransform);
-
 })
 
 app.on("window-all-closed", () => {
@@ -402,7 +424,6 @@ ipcMain.on('video_send', (event, arg) => {
     "&part=liveStreamingDetails,snippet" +
     "&maxResults=1" +
     "&hl=ja" +
-    // `&key=${ process.env['SPEECH_TO_TEXT_API_KEY'] }`
     `&key=${store.get('yt_api_key')}`
   var options = {
     url: url,

@@ -46,7 +46,7 @@ div.message-box{
   bottom: 0px;
   background-color: #333;
   height: auto;
-  width: 1140px;
+  width: 1220px;
   overflow: hidden;
   opacity: 0;
   margin: 8px 8px 8px 8px;
@@ -89,12 +89,11 @@ p.talk-message{
 }
 
 p.talk-message-text{
-  font-family: '07YasashisaGothicBold';
-  font-size: 36px;
+  font-size: 26px;
 }
 
 p.talk-message-EN-text{
-  margin-top: -8px;
+  margin-top: -4px;
   font-size: 26px;
 }
 
@@ -127,8 +126,8 @@ img.author-thumbnail{
   float: left;
   border-radius: 50%;
   margin: 8px 8px 8px 8px;
-  width: 80px;
-  height: 80px;
+  width: 166px;
+  height: 166px;
 }
 
 p.author-name{
@@ -142,7 +141,7 @@ p.author-name{
 }
 
 p.display-message{
-  font-size: 30px;
+  font-size: 34px;
   color: #fff;
   padding: 0 0 0 0px;
   margin: 0 0 0 0;
@@ -152,10 +151,10 @@ p.display-message{
 }
 
 p.display-trans-message{
-  font-size: 22px;
+  font-size: 28px;
   color: #fff;
   padding: 0 0 0 2px;
-  margin: 0 0 8px 0;
+  margin: 0 0 2px 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -164,7 +163,7 @@ p.display-trans-message{
 .fade-in{
 　opacity:0;
   animation-name:sample01;
-  animation-duration:4000ms;
+  animation-duration:4800ms;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }

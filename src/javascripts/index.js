@@ -150,7 +150,11 @@ ipcRenderer.on('livechat_callback', (event, arg) => {
 )
 
 ipcRenderer.on('livechat_trans_callback', (event, arg) => {
-  document.getElementById("display-trans-message").textContent = arg;
+  document.getElementById("display-trans-EN-message").textContent = arg;
+})
+
+ipcRenderer.on('livechat_trans_callback_second', (event, arg) => {
+  document.getElementById("display-trans-PT-message").textContent = arg;
 })
 
 ipcRenderer.on('chat', (event, arg) => {
