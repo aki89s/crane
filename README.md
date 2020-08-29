@@ -1,6 +1,7 @@
 # Crane
 ## Description
 Translate your words into another language in real time.
+※ 事前にGCPアカウントとアプリのAPI KEY と DeepLアカウントのAPI keyが必要になります。
 
 ## How to use
 Clone the repository and add the .env file to the repository
