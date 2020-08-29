@@ -373,7 +373,7 @@ function createWindow(){
     }
   });
   mainWindow.loadURL('file://' + appRootDir + '/src/html/index.html');
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 }
 
 app.on("ready", function() {
