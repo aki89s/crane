@@ -1,10 +1,13 @@
 # DeepL チュートリアル
-コメントの翻訳にはDeepLアカウントとAPIキーが必要になります。
-こちらは有料です。
+コメントの翻訳にはDeepLアカウントとAPIキーが必要になります。  
+こちらは有料です。  
 
 ## 1. DeepLアカウントの作成
+1.  
 <img width="400" alt="deepl_1" src="https://user-images.githubusercontent.com/993125/91636667-65338000-ea3d-11ea-8e1b-9620f867f7e7.png">
+2.  
 <img width="400" alt="deepl_2" src="https://user-images.githubusercontent.com/993125/91636673-72506f00-ea3d-11ea-9678-c3f3f498c6aa.png">
+3.  
 <img width="400" alt="deepl_3" src="https://user-images.githubusercontent.com/993125/91636681-809e8b00-ea3d-11ea-9207-2f9828c16d07.png">
 
 ## 2. APIキーの取得
