@@ -60,7 +60,7 @@
       ]
     },
     "win": {
-      "icon": "assets/win/icon_win.ico",
+      "icon": "assets/win/icon.ico",
       "target": "nsis"
     },
     "nsis": {
