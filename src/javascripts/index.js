@@ -26,7 +26,14 @@ function VoiceInitialize(){
   speechinfo.lang = "ja-JP";
   speechinfo.pitch = 1.0;
   speechinfo.text = "ボイスを初期化しました";
-  window.speechSynthesis.speak(speechinfo);
+
+  if(store.get('talk_message_read_voice_flag') == 1){
+    window.speechSynthesis.speak(speechinfo);
+    document.getElementById('switch_read_voice_input').checked = true
+  }else{
+    document.getElementById('switch_read_voice_input').checked = false
+  }
+
 
   if(store.get('talk_message_display_flag') == 1){
     document.getElementById('talk-message-box').style.visibility = "visible"
@@ -82,6 +89,15 @@ document.getElementById('switch_display_input').addEventListener('click', functi
   }else{
     store.set('talk_message_display_flag', 1);
     document.getElementById('talk-message-box').style.visibility = "visible"
+  }
+})
+
+document.getElementById('switch_read_voice_input').addEventListener('click', function(){
+  if(store.get('talk_message_read_voice_flag') == null){ store.set('talk_message_read_voice_flag', 0) }
+  if(store.get('talk_message_read_voice_flag') == 1){
+    store.set('talk_message_read_voice_flag', 0);
+  }else{
+    store.set('talk_message_read_voice_flag', 1);
   }
 })
 
@@ -144,7 +160,9 @@ ipcRenderer.on('livechat_callback', (event, arg) => {
     document.getElementById("display-message").textContent = last_message;
     document.getElementById("author-thumbnail").src = lastImageUrl;
     speechinfo.text = last_message;
-    window.speechSynthesis.speak(speechinfo);
+    if(store.get('talk_message_read_voice_flag') == 1){
+      window.speechSynthesis.speak(speechinfo);
+    }
     document.querySelector('.message-box').classList.add('fade-in');
   }
 )

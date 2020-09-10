@@ -383,20 +383,6 @@ app.on("ready", function() {
   createWindow();
 
   store.set('talk_message_flag', 0);
-
-  recorder
-    .record({
-      sampleRateHertz: sampleRateHertz,
-      threshold: 0.7,
-      silence: '1.0',
-      keepSilence: true,
-      recordProgram: 'sox',
-    })
-    .stream()
-    .on('error', err => {
-      console.error('Audio recording error ' + err);
-    })
-    .pipe(audioInputStreamTransform);
 })
 
 app.on("window-all-closed", () => {
@@ -414,6 +400,19 @@ app.on("activate", () => {
 // GUI Events
 // ===============
 ipcMain.on('start_talk_message', (event) => {
+  recorder
+    .record({
+      sampleRateHertz: sampleRateHertz,
+      threshold: 0.7,
+      silence: '1.0',
+      keepSilence: true,
+      recordProgram: 'sox',
+    })
+    .stream()
+    .on('error', err => {
+      console.error('Audio recording error ' + err);
+    })
+    .pipe(audioInputStreamTransform);
   startStream();
 })
 
