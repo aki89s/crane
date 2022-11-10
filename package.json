@@ -15,7 +15,7 @@
     "stream": "0.0.2"
   },
   "devDependencies": {
-    "electron": "^9.0.5",
+    "electron": "^18.3.7",
     "electron-builder": "^22.7.0",
     "electron-packager": "^15.0.0"
   },
